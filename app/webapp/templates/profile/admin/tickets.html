@@ -1,0 +1,48 @@
+<div id="alltickets-tab" class="page-wrapper magic-tab">
+    <div class="content container-fluid">
+        <div class="row m-b-10">
+            <div class="col-md-12 col-sm-12 col-lg-12">
+                <h2>Техническая поддержка</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class=white-box-wallet>
+                <div class="row balance-state">
+                    <div class="col-md-12 col-sm-12 col-lg-12">
+                        <h3>Обращения абонентов:</h3>
+                        <hr>
+                        {% if not alltickets %}
+                        <p>Обращений нет</p>
+                        {% endif %}
+                        {% for ticket in alltickets %}
+                        <div class="col-md-12 col-sm-12 col-lg-12 user-deposit">
+                            <div class="deposit-label">
+                                <label>Обращение №{{ ticket.id }}</label>
+                            </div>
+                            <hr class="hr-deposit">
+                            <div class="deposit-body">
+                                <div class="col-lg-3 col-md-4">
+                                    <p>Абонент:</p>
+                                    <a id="userinfo_deposit" href="#" data-toggle="popover" data-html=true title="Информация о пользователе" data-content="Логин: {{  ticket.get_user().login }}<br>
+                            Номер телефона: {{  ticket.get_user().phone_number }}<br>
+                            Email: {{  ticket.get_user().email }}<br>
+                            ">{{  ticket.get_user().last_name }} {{  ticket.get_user().first_name }} {{  ticket.get_user().middle_name }}</a>
+                                </div>
+                                <div class="col-lg-3 col-md-3">
+                                    <p>Вопрос:</p>
+                                    <h5 class="inv-span" id="inv-summ">{{  ticket.description }}</h5>
+                                </div>
+                                
+                                <div class="col-lg-3 col-md-3">
+                                    <p>Ответ:</p>
+                                    <h5 class="inv-span" id="inv-summ">{{  ticket.answer }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

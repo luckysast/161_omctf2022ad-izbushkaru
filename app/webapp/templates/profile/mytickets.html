@@ -1,0 +1,51 @@
+<div id="mytickets-tab" class="page-wrapper magic-tab">
+    <div class="content container-fluid">
+        <div class="row m-b-10">
+            <!--Блок состояния кошелька-->
+            <div class="col-md-12 col-sm-12 col-lg-12">
+                <h2 class="text-center">Техническая поддержка</h2>
+                <hr id="hr-profile-wallet-choose">
+            </div>
+            <div class="col-md-12 col-sm-12 col-lg-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="text-center">Создать обращение</h3>
+                        <form action="{{ url_for('create_ticket') }}" id="create_ticket" method="post" name="create_ticket">
+                            <div class="form-group form-focus">
+                                <label for="{{ make_ticket.description.id }}" class="control-label">{{ make_ticket.description.label.text }}</label>
+                                {{ make_ticket.description(size=1000,class="form-control floating",type="text") }}
+                            </div>
+                            <div class="form-group form-focus">
+                                <label for="{{ make_ticket.additional_info.id }}" class="control-label">{{ make_ticket.additional_info.label.text }}</label>
+                                {{ make_ticket.additional_info(size=20,class="form-control floating",type="text") }}
+                            </div>
+                            <div class="form-group text-center">
+                                <button class="btn btn-primary btn-block account-btn" type="submit">Создать</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="text-center">Мои обращения</h3>
+                        {% for ticket in g.user.get_tickets() %}
+                        <div class="vklad-container col-md-6 col-sm-6 col-lg-6">
+                            <div id="" class="vklad-container-body">
+                                <h4 style="text-align: center;">Обращение № {{ ticket.id }}</h4>
+                                <h5>Содержание:</h5>
+                                <hr class="hr-margin-10">
+                                <p style="word-wrap: break-word!important;">{{ ticket.description }}</p>
+                                <hr class="hr-margin-10">
+                                <p style="color: green; word-wrap: break-word!important;">{{ ticket.answer }}</p>
+                                {% if ticket.status == 1 %}
+                                <p class="custom-p">Статус: <span id="inv-avail-to-out" style="color:green">открыт</span></p>
+                                {% else %}
+                                <p class="custom-p">Статус: <span id="inv-avail-to-out" style="color:red">закрыт</span></p>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

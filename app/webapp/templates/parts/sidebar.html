@@ -1,0 +1,33 @@
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+                <li class="menu-title">Навигация</li>
+                <li id="li-profile" class="active">
+                    <a onclick="show_profile()" href="#account"><i class="fa fa-address-card"></i> Мой профиль</a>
+                </li>
+                {% if (g.user.has_role('subscriber')) %}
+                <li id="li-mytickets">
+                    <a onclick="show_mytickets()" href="#mytickets"><i class="fas fa-wallet"></i> &nbsp;Поддержка</a>
+                </li>
+                {% endif %}
+                {% if (g.user.has_role('admin')) %}
+                <li id="li-alltickets">
+                    <a onclick="show_alltickets()" href="#alltickets"><i class="fas fa-users"></i> Все обращения </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <div id="info-pull-down" class="sidebar-menu">
+            <ul>
+                <li class="menu-title">Нормативные документы</li>
+                <li id="li-policy">
+                    <a href="/static/uploads/docs/policy.docx" class="doc-link" style=""><i class="fa fa-file"></i>Политика конфиденциальности</a>
+                </li>
+                <li id="li-user-agreement">
+                    <a href="/static/uploads/docs/user-agreement.docx" class="doc-link"><i class="fas fa-file"></i>Пользовательское соглашение</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

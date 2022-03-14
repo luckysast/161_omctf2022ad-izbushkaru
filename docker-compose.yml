@@ -1,0 +1,48 @@
+version: '2.1'
+services:
+  izbushka_app:
+    environment:
+      - TZ=Europe/Moscow
+      - WEB_CONCURRENCY=3
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    sysctls:
+      - net.core.somaxconn=1024
+    volumes:
+      - './app:/usr/src/app:rw'
+    container_name: izbushka_app
+    restart: always
+    mem_limit: 1024m
+    ports:
+      - '8080'
+#    depends_on:
+#      izbushka_redis_db:
+#        condition: service_healthy
+  izbushka_nginx:
+    volumes:
+      - './app/webapp/static:/static'
+    container_name: izbushka_nginx
+    mem_limit: 1024m
+    restart: always
+    build: ./nginx
+    sysctls:
+      - net.core.somaxconn=1024
+    ports:
+      - '7777:80'
+    depends_on:
+      - izbushka_app
+    volumes_from:
+      - izbushka_app
+#  izbushka_redis_db:
+#    image: 'redis:5.0-alpine'
+#    mem_limit: 512m
+#    ports:
+#      - '6379'
+#    volumes:
+#      - './redis/data:/data'
+#    healthcheck:
+#      test: ["CMD", "redis-cli", "ping"]
+#      interval: 1s
+#      timeout: 3s
+#      retries: 30      

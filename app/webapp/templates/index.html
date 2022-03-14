@@ -1,0 +1,104 @@
+{% include "parts/head.html" %}
+<style>
+    /* Custom container */
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+  min-height:100%;
+  background-color:#110022;
+  color:#eee;
+  overflow:hidden;
+}
+    .container-full a {
+  color:#efefef;
+  text-decoration:none;
+}
+
+.v-center {
+  margin-top:7%;
+}
+</style>
+<div class="container-full">
+
+      <div class="row">
+
+        <div class="col-lg-12 text-center v-center">
+            <img src="static/img/logo.png"/>
+          <h1>Интернет провайдер ИЗБУШКА.ру</h1>
+          <p class="lead">Проложим Вам интернет через дымоход!</p>
+
+          <br>
+
+
+           <a class="btn btn-lg btn-primary" href="{{ url_for_security('login') }}" type="button">Вход в личный кабинет</a>
+            <a class="btn btn-lg btn-primary" href="{{ url_for('render_register') }}" type="button">Я новый абонент!</a>
+
+        </div>
+        <div class="col-sm-12 text-center v-center">
+            Новые абоненты, которые с нами недавно:<br>
+            {% for subscriber in super_chelicks %}
+                {{ subscriber.login }}<br>
+            {% endfor %}
+        </div>
+
+      </div> <!-- /row -->
+
+  	  <div class="row">
+
+        <div class="col-lg-12 text-center v-center" style="font-size:39pt;">
+          <a href="#"><i class="icon-google-plus"></i></a> <a href="#"><i class="icon-facebook"></i></a>  <a href="#"><i class="icon-twitter"></i></a> <a href="#"><i class="icon-github"></i></a> <a href="#"><i class="icon-pinterest"></i></a>
+        </div>
+
+      </div>
+
+  	<br><br><br><br><br>
+
+</div> <!-- /container full -->
+
+<div class="container">
+
+  	<hr>
+
+  	<div class="row">
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading"><h3>Тариф "Элитный" &#128526;</h3></div>
+                  <div class="panel-body">Фильмы и сериалы на скорости <b>31337</b> кб/сек!
+                      Остальное вряд ли заработает. Но ... Вообще есть <b>60</b> каналов ТВ<br>
+                      Стоимость: <b>450 ₽</b>
+            </div>
+          </div>
+        </div>
+      	<div class="col-md-4">
+        	<div class="panel panel-default">
+            <div class="panel-heading"><h3>Тариф "Бугурт" &#127774;</h3></div>
+            <div class="panel-body">Невероятно согревающий тариф в зимние месяцы.
+                <b>Высококвалифицированная</b> техническая поддержка будет приятным бонусом
+                к условиям тарифа "Элитный" <br>
+                Стоимость: <b>400 ₽</b>
+            </div>
+          </div>
+        </div>
+      	<div class="col-md-4">
+        	<div class="panel panel-default">
+            <div class="panel-heading"><h3>Тариф "Интернет" &#127757;</h3></div>
+            <div class="panel-body">
+            Обыкновенный интернет, скорость <b>100МБ/c</b>. Просто работает и все.<br>
+                Стоимость: <b>Недоступен</b>
+            </div>
+          </div>
+        </div>
+    </div>
+
+	<div class="row">
+        <div class="col-lg-12">
+        <br><br>
+          <p class="pull-right">&nbsp; ©Copyright 2022 ИЗБУШКА.ру
+        <br><br>
+        </div>
+    </div>
+</div>
+
+
+
+{% include "parts/footer.html" %}

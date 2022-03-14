@@ -1,0 +1,42 @@
+{% include "parts/loginhead.html" %}
+        <div class="account-page">
+            <div class="container">
+                <h3 class="account-title">Вход в личный кабинет абонента</h3>
+                <div class="account-box">
+                    <div class="account-wrapper">
+                        <div class="account-logo">
+                            <a href="/"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="izbushkaru"></a>
+                        </div>
+                        <hr>
+                        <div id="incorrect-login" class="magic-tab">
+                            <div id="incorrect-wrapper">
+
+                            </div>
+                            <hr>
+                        </div>
+                        <form action="{{ url_for('security.login') }}" id="login_form" method="post" name="login_form">
+                            <div class="form-group form-focus">
+                                <label for="{{ login_user_form.email.id }}" class="control-label">{{ login_user_form.email.label.text }}</label>
+                                {{ login_user_form.email(size=20,class="form-control floating",type="text") }}
+                            </div>
+                           <div class="form-group form-focus">
+                                <label for="{{ login_user_form.email.id }}" class="control-label">{{ login_user_form.password.label.text }}</label>
+                                {{ login_user_form.password(size=20,class="form-control floating",type="password") }}
+                            </div>
+                            <div class="form-group text-center">
+                                <button class="btn btn-primary btn-block account-btn" type="submit">Войти</button>
+                            </div>
+                            <div class="text-center">
+                                <a href="/reset">Забыли пароль?</a>
+                            </div>
+                            <hr>
+                             <div class="text-center">
+                                <a href="{{ url_for('render_register') }}">Стать абонентом</a>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% include "parts/footer.html" %}

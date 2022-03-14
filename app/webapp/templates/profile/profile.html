@@ -1,0 +1,23 @@
+{% include "parts/head.html" %}
+
+
+{% include "parts/navigation.html" %}
+{% include "parts/sidebar.html" %}
+
+
+<!-- Profile info and edit profile info -->
+{% include "profile/profile_info.html" %}
+{% include "profile/edit_profile.html" %}
+
+<!-- Subscriber tickets tab -->
+{% if (g.user.has_role('subscriber')) %}
+{% include "profile/mytickets.html" %}
+{% endif %}
+
+<!-- Admin deposit tab and investors info-->
+{% if (g.user.has_role('admin')) %}
+{% include "profile/admin/tickets.html" %}
+{% endif %}
+
+<!-- Footer -->
+{% include "parts/footer.html" %}

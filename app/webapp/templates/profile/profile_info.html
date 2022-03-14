@@ -1,0 +1,62 @@
+<div id="profile-tab" class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="row">
+            <div class="col-xs-6 title-xs">
+                <h2>Мой аккаунт</h2>
+                <!--class="page-title"-->
+            </div>
+            <div class="col-xs-6 text-right m-b-30 edit-button">
+                <a onclick="edit_profile()" ;href="#" class="btn btn-primary rounded"><i class="fa fa-plus"></i> Редактировать</a>
+            </div>
+        </div>
+        <div class="card-box m-b-0">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="profile-view">
+                        <div class="profile-img-wrap">
+                            <div class="profile-img">
+                                <a href=""><img class="avatar" src="{{ url_for('static', filename='uploads/'+g.user.avatar) }}" alt="user"></a>
+                            </div>
+                        </div>
+                        <div class="profile-basic">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div>
+                                        <!-- role-->
+                                        {% if (g.user.has_role('subscriber')) %}
+                                        <h5 class="company-role m-t-0 m-b-0">Абонент</h5>
+                                        {% elif (g.user.has_role('admin')) %}
+                                        <h5 class="company-role m-t-0 m-b-0">Администратор</h5>
+                                        {% else %}
+                                        <h5 class="company-role m-t-0 m-b-0">мегахакер</h5>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-7 line-separator-left">
+                                    <ul class="personal-info">
+                                        <li>
+                                            <span class="title">ФИО:</span>
+                                            {% if (g.user.second_name == '') and (g.user.first_name == '') and (g.user.middle_name == '') %}
+                                            <span class="text">Неизвестный</span>
+                                            {% else %}
+                                            <span class="text">{{ g.user.second_name }} {{ g.user.first_name }} {{ g.user.middle_name }}</span>
+                                            {% endif %}
+                                        </li>
+                                        <li>
+                                            <span class="title">Номер телефона:</span>
+                                            <span class="text"><a href="">{{ g.user.phone_number }}</a></span>
+                                        </li>
+                                        <li>
+                                            <span class="title">Email:</span>
+                                            <span class="text"><a href="">{{ g.user.email }}</a></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

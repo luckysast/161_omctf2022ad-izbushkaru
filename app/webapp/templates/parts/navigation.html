@@ -1,0 +1,20 @@
+        <div class="header">
+            <div class="header-left">
+                <a href="/" class="logo-with-text">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="">
+            </div>
+            <div class="page-title-box pull-left">
+                {% if (g.user.has_role('subscriber')) %}
+                <h3>Личный кабинет абонента</h3>
+                {% elif (g.user.has_role('admin')) %}
+                <h3>Панель администратора</h3>
+                {% else %}
+                <h3>Панель МЕГАХАКЕРА</h3>
+                {% endif %}
+            </div>
+            <a id="mobile_btn" class="mobile_btn pull-left" href="#sidebar"><i class="fa fa-bars" aria-hidden="true"></i></a>
+            <div class="header-right pull-right">
+                <!--<span class="telephone"></span>-->
+                <a class="btn btn-logout"href="/logout">Выход</a>
+            </div>
+        </div>

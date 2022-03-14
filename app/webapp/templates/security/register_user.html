@@ -1,0 +1,61 @@
+{% include "parts/loginhead.html" %}
+        <div class="account-page">
+            <div class="container">
+                <h3 class="account-title">Регистрация нового абонента</h3>
+                <div class="account-box">
+                    <div class="account-wrapper">
+                        <div class="account-logo">
+                            <a href="/"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="izbushkaru"></a>
+                        </div>
+                        <hr>
+                        <div id="incorrect-login" class="magic-tab">
+                            <div id="incorrect-wrapper">
+
+                            </div>
+                            <hr>
+                        </div>
+                        <form action="{{ url_for('perform_register') }}" id="register_user_form" method="post" name="register_user_form">
+                            <div class="form-group form-focus">
+                                <label for="{{ register_user_form.login.id }}" class="control-label">{{ register_user_form.login.label.text }}</label>
+                                {{ register_user_form.login(size=20,class="form-control floating",type="text") }}
+                            </div>
+                            <div class="form-group form-focus">
+                                <label for="{{ register_user_form.email.id }}" class="control-label">{{ register_user_form.email.label.text }}</label>
+                                {{ register_user_form.email(size=20,class="form-control floating",type="text") }}
+                            </div>
+                            <div class="form-group form-focus">
+                                <label for="{{ register_user_form.last_name.id }}" class="control-label">{{ register_user_form.last_name.label.text }}</label>
+                                {{ register_user_form.last_name(size=20,class="form-control floating",type="text") }}
+                            </div>
+                            <div class="form-group form-focus">
+                                <label for="{{ register_user_form.first_name.id }}" class="control-label">{{ register_user_form.first_name.label.text }}</label>
+                                {{ register_user_form.first_name(size=20,class="form-control floating",type="text") }}
+                            </div>
+                            <div class="form-group form-focus">
+                                <label for="{{ register_user_form.middle_name.id }}" class="control-label">{{ register_user_form.middle_name.label.text }}</label>
+                                {{ register_user_form.middle_name(size=20,class="form-control floating",type="text") }}
+                            </div>
+                            <div class="form-group form-focus">
+                                <label for="{{ register_user_form.phone_number.id }}" class="control-label">{{ register_user_form.phone_number.label.text }}</label>
+                                {{ register_user_form.phone_number(size=20,class="form-control floating",type="text") }}
+                            </div>
+                           <div class="form-group form-focus">
+                                <label for="{{ register_user_form.password.id }}" class="control-label">{{ register_user_form.password.label.text }}</label>
+                                {{ register_user_form.password(size=20,class="form-control floating",type="password") }}
+                            </div>
+                            <div class="form-group form-focus">
+                                <label for="{{ register_user_form.password_confirm.id }}" class="control-label">{{ register_user_form.password_confirm.label.text }}</label>
+                                {{ register_user_form.password_confirm(size=20,class="form-control floating",type="password") }}
+                            </div>
+                            <div class="form-group text-center">
+                                <button class="btn btn-primary btn-block account-btn" type="submit">Зарегистрироваться</button>
+                            </div>
+                            <div class="text-center">
+                                <a href="{{ url_for_security('login') }}">Уже абонент? Залогиньтесь!</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% include "parts/footer.html" %}

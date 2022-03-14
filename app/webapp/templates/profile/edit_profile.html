@@ -1,0 +1,75 @@
+<div id="edit-profile" class="page-wrapper magic-tab">
+    <div class="content container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="page-title">Редактирование профиля</h4>
+            </div>
+        </div>
+        <!--<form>-->
+        <div class="card-box">
+            <h3 class="card-title">Основная информация</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <form name="uploadavatar" id="uploadavatar" method="post" action="/uploadavatar" enctype="multipart/form-data">
+                        <div class="profile-img-wrap">
+                            <img crossOrigin="anonymous" class="inline-block" src="{{ url_for('static', filename='uploads/'+g.user.avatar) }}" alt="user">
+                            <div class="fileupload btn btn-default">
+                                <span class="btn-text">изменить</span>
+                                {{ avatar_form.image(type="file",class="file item-img upload") }}
+                            </div>
+                        </div>
+                    </form>
+                    <form id="edit-profile" name="edit-profile" method="post" action="{{ url_for('edit_profile') }}">
+                        <div class="profile-basic">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group form-focus">
+                                        {% if g.user.last_name == '' %}
+                                        <label for="{{ edit_profile_form.last_name.id }}" class="control-label">{{ edit_profile_form.last_name.label.text }}</label>
+                                        {% else %}
+                                        <label class="control-label">{{ g.user.last_name }}</label>
+                                        {% endif %}
+                                        {{ edit_profile_form.last_name(class="form-control floating",type="text") }}
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group form-focus">
+                                        {% if g.user.first_name == '' %}
+                                        <label for="{{ edit_profile_form.first_name.id }}" class="control-label">{{ edit_profile_form.first_name.label.text }}</label>
+                                        {% else %}
+                                        <label class="control-label">{{ g.user.first_name }}</label>
+                                        {% endif %}
+                                        {{ edit_profile_form.first_name(class="form-control floating",type="text") }}
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group form-focus">
+                                        {% if g.user.middle_name == '' %}
+                                        <label for="{{ edit_profile_form.middle_name.id }}" class="control-label">{{ edit_profile_form.middle_name.label.text }}</label>
+                                        {% else %}
+                                        <label class="control-label">{{ g.user.middle_name }}</label>
+                                        {% endif %}
+                                        {{ edit_profile_form.middle_name(class="form-control floating",type="text") }}
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group form-focus">
+                                        {% if g.user.phone_number == '' %}
+                                        <label for="{{ edit_profile_form.phone_number.id }}" class="control-label">{{ edit_profile_form.phone_number.label.text }}</label>
+                                        {% else %}
+                                        <label class="control-label">{{ g.user.phone_number }}</label>
+                                        {% endif %}
+                                        {{ edit_profile_form.phone_number(class="form-control floating",type="text") }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center m-b-10 m-t-20">
+                            <button class="btn btn-primary btn-lg" type="submit">Сохранить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
